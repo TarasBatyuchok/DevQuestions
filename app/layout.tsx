@@ -3,6 +3,10 @@ import localFont from "next/font/local";
 import "./globals.css";
 import ThemeProvider from "@/context/Theme";
 
+import { cn } from "@/lib/utils";
+
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+
 const inter = localFont({
   src: "./fonts/InterVF.ttf",
   variable: "--font-inter",
@@ -30,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={` ${inter.variable} ${spaceGrotesk.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang="en" className={cn("h-full", "antialiased", spaceGrotesk.variable, "font-sans", inter.variable)} suppressHydrationWarning>
       <body className="flex min-h-full flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
