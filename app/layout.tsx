@@ -35,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("h-full", "antialiased", spaceGrotesk.variable, "font-sans", inter.variable)} suppressHydrationWarning>
+    <html lang="en" className={cn("h-full", spaceGrotesk.variable, inter.variable)} suppressHydrationWarning>
       <body className="flex min-h-full flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}

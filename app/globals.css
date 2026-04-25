@@ -6,10 +6,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-* {
-  outline: none !important;
-}
-
 @theme {
   --color-primary-100: #fff1e6;
   --color-primary-500: #ff7000;
@@ -36,22 +32,56 @@
   --radius-sm: calc(var(--radius) - 4px);
 
   --shadow-light-100:
-    0px 12px 20px 0px rgba(184, 184, 184, 0.03),
-    0px 6px 12px 0px rgba(184, 184, 184, 0.02),
+    0px 12px 20px 0px rgba(184, 184, 184, 0.03), 0px 6px 12px 0px rgba(184, 184, 184, 0.02),
     0px 2px 4px 0px rgba(184, 184, 184, 0.03);
   --shadow-light-200: 10px 10px 20px 0px rgba(218, 213, 213, 0.1);
   --shadow-light-300: -10px 10px 20px 0px rgba(218, 213, 213, 0.1);
   --shadow-dark-100: 0px 2px 10px 0px rgba(46, 52, 56, 0.1);
   --shadow-dark-200: 2px 0px 20px 0px rgba(39, 36, 36, 0.04);
 
-  --background-image-auth-dark: url("/images/auth-dark.png");
-  --background-image-auth-light: url("/images/auth-light.png");
+  /* --background-image-auth-dark: url("/images/auth-dark.png");
+  --background-image-auth-light: url("/images/auth-light.png"); */
 
   --breakpoint-xs: 420px;
 
   --font-inter: var(--font-inter);
   --font-space-grotesk: var(--font-space-grotesk);
 
+  
+--animate-star-movement-bottom: star-movement-bottom 6s linear infinite  alternate;
+  --animate-star-movement-top: star-movement-top 6s linear infinite  alternate;
+
+
+@keyframes star-movement-bottom {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
+  }
+
+  @keyframes star-movement-top {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100%, 0%);
+    opacity: 0;
+  }
+  }
+
+}
+
+
+
+
+
+.bg-orange-beam {
+  background: radial-gradient(circle, #ff9933 0%, #ff9933 5%, transparent 10%);
 }
 
 @layer base {
@@ -61,21 +91,18 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-gray-200, currentcolor);
+    outline: none !important;
   }
   * {
     @apply border-border outline-ring/50;
-
   }
   body {
     @apply bg-background text-foreground;
-
   }
   html {
-    @apply font-sans;
-
+    @apply font-inter;
   }
 }
-
 
 @utility blob-container {
   @apply fixed inset-0 z-0 overflow-hidden pointer-events-none;
@@ -284,24 +311,12 @@
 }
 
 @utility dark-gradient {
-  background: linear-gradient(
-    232deg,
-    rgba(23, 28, 35, 0.41) 0%,
-    rgba(19, 22, 28, 0.7) 100%
-  );
-  background: linear-gradient(
-    232deg,
-    rgba(23, 28, 35, 0.41) 0%,
-    rgba(19, 22, 28, 0.7) 100%
-  );
+  background: linear-gradient(232deg, rgba(23, 28, 35, 0.41) 0%, rgba(19, 22, 28, 0.7) 100%);
+  background: linear-gradient(232deg, rgba(23, 28, 35, 0.41) 0%, rgba(19, 22, 28, 0.7) 100%);
 }
 
 @utility light-gradient {
-  background: linear-gradient(
-    132deg,
-    rgba(247, 249, 255, 0.5) 0%,
-    rgba(229, 237, 255, 0.25) 100%
-  );
+  background: linear-gradient(132deg, rgba(247, 249, 255, 0.5) 0%, rgba(229, 237, 255, 0.25) 100%);
 }
 
 @utility primary-text-gradient {
@@ -392,8 +407,7 @@
 }
 
 .active-theme {
-  filter: invert(53%) sepia(98%) saturate(3332%) hue-rotate(0deg)
-    brightness(104%) contrast(106%) !important;
+  filter: invert(53%) sepia(98%) saturate(3332%) hue-rotate(0deg) brightness(104%) contrast(106%) !important;
 }
 
 .hash-span {
@@ -514,7 +528,6 @@ code {
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
-
 }
 
 :root {
@@ -550,7 +563,6 @@ code {
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-
 }
 
 .dark {
@@ -585,5 +597,4 @@ code {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-
 }
