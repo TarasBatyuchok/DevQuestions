@@ -76,6 +76,11 @@
   }
 }
 
+
+@utility blob-container {
+  @apply fixed inset-0 z-0 overflow-hidden pointer-events-none;
+}
+
 @utility background-light850_dark100 {
   @apply bg-light-850 dark:bg-dark-100;
 }
