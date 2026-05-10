@@ -28,7 +28,7 @@ const SocialAuthForm = () => {
     }
   };
   return (
-    <div className="flex w-full gap-4">
+    <div className="flex w-full gap-4 mt-[40px]">
       <Button variant="ghost" className={buttonContainer} onClick={() => handleSignIn("github")}>
         <div className="bg-orange-beam group-hover:animate-star-movement-bottom absolute right-[-250%] bottom-[-10px] z-0 h-[70%] w-[300%] rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-90" />
         <div className="bg-orange-beam group-hover:animate-star-movement-top absolute top-[-10px] left-[-250%] z-0 h-[70%] w-[300%] rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-90" />
