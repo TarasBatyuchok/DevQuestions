@@ -1,5 +1,6 @@
 // /components/forms/AuthForm.tsx
 "use client";
+import React, { useState } from "react";
 
 import { standardSchemaResolver } from "@hookform/resolvers/standard-schema";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
@@ -10,6 +11,7 @@ import { z, ZodType } from "zod";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import PasswordStrengthMeter from "@/components/ui/PasswordStrengthMeter";
 import ROUTES from "@/constants/routes";
 
 interface AuthFormProps<T extends FieldValues> {
@@ -30,6 +32,8 @@ const AuthForm = <T extends FieldValues>({ schema, defaultValues, formType, onSu
   };
 
   const buttonText = formType === "SIGN_IN" ? "Sign In" : "Sign Up";
+
+  const [password, setPassword] = useState("");
 
   return (
     <Form {...form}>
@@ -53,9 +57,19 @@ const AuthForm = <T extends FieldValues>({ schema, defaultValues, formType, onSu
                     required
                     type={fieldData.name === "password" ? "password" : "text"}
                     {...fieldData}
+                    onChange={(e) => {
+                      fieldData.onChange(e);
+
+                      if (fieldData.name === "password") {
+                        setPassword(e.target.value);
+                      }
+                    }}
                     className="paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 no-focus rounded-1.5 min-h-12 border"
                   />
                 </FormControl>
+                {fieldData.name === "password" && formType === "SIGN_UP" && (
+                  <PasswordStrengthMeter password={password} />
+                )}
                 <FormMessage />
               </FormItem>
             )}
